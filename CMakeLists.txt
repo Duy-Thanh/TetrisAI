@@ -16,11 +16,47 @@ set(SOURCES
     ${SRC_DIR}/Orientation.cpp
     ${SRC_DIR}/PlayfieldEvaluation.cpp
     ${SRC_DIR}/Queue.cpp
+    ${SRC_DIR}/Tetriminos.cpp
     ${SRC_DIR}/main.cpp
 )
 
-add_executable(tetrisai ${SOURCES})
+# First create the target
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_include_directories(tetrisai PRIVATE ${INCLUDE_DIR})
+# Then add include directories
+target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 
-target_link_libraries(tetrisai)
+# Then add compile and link options
+if(MSVC)
+    # Enable multi-processor compilation
+    target_compile_options(${PROJECT_NAME} PRIVATE 
+        /MP             # Enable multi-processor compilation
+        /Zc:__cplusplus # Enable proper __cplusplus macro
+        /permissive-   # Standards conformance
+        /Zc:preprocessor # Enable standards-conforming preprocessor
+        /EHsc          # Exception handling model
+        /sdl
+        /guard:cf
+        /GS
+    )
+
+    # Optimization flags for Release builds
+    target_compile_options(${PROJECT_NAME} PRIVATE 
+        $<$<CONFIG:Release>:/Ox>      # Maximum optimization
+        $<$<CONFIG:Release>:/Oi>      # Enable intrinsic functions
+        $<$<CONFIG:Release>:/Gy>      # Function-level linking
+        $<$<CONFIG:Release>:/GL>      # Whole program optimization
+    )
+
+    # Linker flags for Release builds
+    target_link_options(${PROJECT_NAME} PRIVATE
+        $<$<CONFIG:Release>:/LTCG>    # Link-time code generation
+        $<$<CONFIG:Release>:/NXCOMPAT>    # Data Execution Prevention
+        $<$<CONFIG:Release>:/CETCOMPAT>    # Control-flow Enforcement Technology
+        $<$<CONFIG:Release>:/DYNAMICBASE>    # Address Space Layout Randomization
+        $<$<CONFIG:Release>:/MACHINE:X64>    # Target machine
+    )
+endif()
+
+# Finally add any additional libraries
+target_link_libraries(${PROJECT_NAME})
