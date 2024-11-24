@@ -10,7 +10,16 @@ set(ROOT_DIR ${CMAKE_SOURCE_DIR}/ai)
 set(INCLUDE_DIR ${ROOT_DIR}/include)
 set(SRC_DIR ${ROOT_DIR}/src)
 
-add_executable(tetrisai ${SRC_DIR}/main.cpp)
+set(SOURCES 
+    ${SRC_DIR}/State.cpp
+    ${SRC_DIR}/Point.cpp
+    ${SRC_DIR}/Orientation.cpp
+    ${SRC_DIR}/PlayfieldEvaluation.cpp
+    ${SRC_DIR}/Queue.cpp
+    ${SRC_DIR}/main.cpp
+)
+
+add_executable(tetrisai ${SOURCES})
 
 target_include_directories(tetrisai PRIVATE ${INCLUDE_DIR})
 
