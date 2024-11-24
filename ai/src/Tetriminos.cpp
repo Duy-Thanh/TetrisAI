@@ -27,7 +27,7 @@ namespace tetris {
 
                     tetrimino.minX = -minX;
                     tetrimino.maxX = AI::PLAYFIELD_WIDTH - maxX - 1;
-                    tetrimino.maxY = maxY;
+                    tetrimino.maxY = AI::PLAYFIELD_HEIGHT - maxY - 1;
 
                     tetriminos.push_back(tetrimino);
                 }
