@@ -84,6 +84,7 @@ try {
     Write-Host "Setting up vswhere..."
     New-Item -ItemType Directory -Path $vswhereDirectory -Force | Out-Null
     $vswhereFile = Join-Path $vswhereDirectory "vswhere.exe"
+    New-Item -Path (Join-Path $vswhereDirectory ".gitkeep") -ItemType File -Force | Out-Null
     
     if (-not (Test-Path $vswhereFile) -or $true) { # Always update vswhere
         Download-FileWithRetry -Uri "https://github.com/microsoft/vswhere/releases/latest/download/vswhere.exe" -OutFile $vswhereFile
