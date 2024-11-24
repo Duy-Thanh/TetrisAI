@@ -36,5 +36,3 @@ if "%OPTIONS%" == "/Clean" (
     cmake -Bbuild -H.
     cmake --build build --config Release
 )
-
-pause
