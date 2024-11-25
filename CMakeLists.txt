@@ -15,6 +15,7 @@ set(SOURCES
     ${SRC_DIR}/Point.cpp
     ${SRC_DIR}/Orientation.cpp
     ${SRC_DIR}/PlayfieldEvaluation.cpp
+    ${SRC_DIR}/PlayfieldUtil.cpp
     ${SRC_DIR}/Queue.cpp
     ${SRC_DIR}/Tetriminos.cpp
     ${SRC_DIR}/Searcher.cpp
