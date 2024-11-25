@@ -19,6 +19,7 @@ set(SOURCES
     ${SRC_DIR}/Queue.cpp
     ${SRC_DIR}/Tetriminos.cpp
     ${SRC_DIR}/Searcher.cpp
+    ${SRC_DIR}/AI.cpp
     ${SRC_DIR}/main.cpp
 )
 
@@ -40,6 +41,8 @@ if(MSVC)
         /sdl
         /guard:cf
         /GS
+        /arch:SSE2
+        /FAcs
     )
 
     # Optimization flags for Release builds

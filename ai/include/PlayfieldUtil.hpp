@@ -12,7 +12,7 @@ namespace tetris {
         class PlayfieldUtil {
             private:
                 std::vector<std::vector<int>> spareRows;
-                std::vector<int> columnsDepths;
+                std::vector<int> columnDepths;
                 int spareIndex;
             
             public:
