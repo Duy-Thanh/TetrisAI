@@ -1,12 +1,15 @@
 #pragma once
 
+#include <vector>
+
 namespace tetris {
     namespace ai {
         class IChildFilter {
-            virtual ~IChildFilter() = default;
+            public:
+                virtual ~IChildFilter() = default;
 
-            virtual bool validate(int** playfield, int tetriminoType, 
-                int x, int y, int rotation) = 0;
+                virtual bool validate(std::vector<std::vector<int>>& playfield, int tetriminoType, 
+                    int x, int y, int rotation) = 0;
         };
     }
 }

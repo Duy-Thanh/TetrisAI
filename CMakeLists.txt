@@ -17,6 +17,7 @@ set(SOURCES
     ${SRC_DIR}/PlayfieldEvaluation.cpp
     ${SRC_DIR}/Queue.cpp
     ${SRC_DIR}/Tetriminos.cpp
+    ${SRC_DIR}/Searcher.cpp
     ${SRC_DIR}/main.cpp
 )
 

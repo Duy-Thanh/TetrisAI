@@ -5,10 +5,11 @@
 namespace tetris {
     namespace ai {
         class ISearchListener {
-            virtual ~ISearchListener() = default;
+            public:
+                virtual ~ISearchListener() = default;
 
-            virtual void handleResult(int** playfield, int tetriminotype,
-                int id, State state) = 0;
+                virtual void handleResult(std::vector<std::vector<int>>& playfield, int tetriminoType,
+                    int id, State state) = 0;
         };
     }
 }
