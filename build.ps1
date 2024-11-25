@@ -205,6 +205,34 @@ try {
         Remove-Item -Path $launcherConfigPath -Force
     }
 
+    # After successful build, copy asset folders
+    Write-Host "Copying asset folders..."
+    $assetsSourceDir = Join-Path $currentDirectory "assets"
+    
+    # Copy images folder
+    $imagesSourceDir = Join-Path $assetsSourceDir "images"
+    $imagesTargetDir = Join-Path $releaseDir "images"
+    if (Test-Path $imagesSourceDir) {
+        Write-Host "Copying images folder..."
+        Copy-Item -Path $imagesSourceDir -Destination $releaseDir -Recurse -Force
+        Write-Host "Images folder copied successfully"
+    } else {
+        Write-Warning "Images folder not found at: $imagesSourceDir"
+    }
+
+    # Copy patterns folder
+    $patternsSourceDir = Join-Path $assetsSourceDir "patterns"
+    $patternsTargetDir = Join-Path $releaseDir "patterns"
+    if (Test-Path $patternsSourceDir) {
+        Write-Host "Copying patterns folder..."
+        Copy-Item -Path $patternsSourceDir -Destination $releaseDir -Recurse -Force
+        Write-Host "Patterns folder copied successfully"
+    } else {
+        Write-Warning "Patterns folder not found at: $patternsSourceDir"
+    }
+
+    Write-Host "Asset folders copied to release directory"
+
     # Setup dependencies
     Write-Host "Setting up dependencies..."
     
